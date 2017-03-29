@@ -161,7 +161,7 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
             localaddr = req.localAddr();
             localport = req.localPort();
             remoteaddr = req.remoteAddr();
-            x_forwarded_host = req.headers().get("X-Forwarded-Host");
+            x_forwarded_host = req.header("X-Forwarded-Host");
             remoteport = req.remotePort();
             scheme = req.scheme();
             remoteuser = req.remoteUser();
