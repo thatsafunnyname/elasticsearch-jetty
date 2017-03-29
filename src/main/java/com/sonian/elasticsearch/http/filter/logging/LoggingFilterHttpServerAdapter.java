@@ -130,6 +130,8 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
         private final long localport;
 
         private final String remoteaddr;
+        
+        private final String x_forwarded_host;
 
         private final long remoteport;
 
@@ -159,6 +161,7 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
             localaddr = req.localAddr();
             localport = req.localPort();
             remoteaddr = req.remoteAddr();
+            x_forwarded_host = req.headers().get("X-Forwarded-Host");
             remoteport = req.remotePort();
             scheme = req.scheme();
             remoteuser = req.remoteUser();
@@ -200,6 +203,7 @@ public class LoggingFilterHttpServerAdapter implements FilterHttpServerAdapter {
                 json.field("localaddr", localaddr);
                 json.field("localport", localport);
                 json.field("remoteaddr", remoteaddr);
+                json.field("x_forwarded_host", x_forwarded_host);
                 json.field("remoteport", remoteport);
                 json.field("scheme", scheme);
                 json.field("method", method);
